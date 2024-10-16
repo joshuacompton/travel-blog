@@ -1,9 +1,9 @@
 'use client'
 
 import Image from 'next/image'
+import PayloadImage from '@/components/article/PayloadImage'
 import ArticlePreview from '@/components/homepage/ArticlePreview'
 import { useParams } from 'next/navigation'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import qs from 'qs'
 
@@ -49,21 +49,17 @@ export default function Category() {
     }
     fetchPages()
   }, [])
-  console.log(pages)
-  return (
-    <div className="mt-16">
-      <h1 className="text-center">{category.title}</h1>
-      {activeImage?.url ? (
-        <Image
-          className="w-full h-80 object-cover"
-          src={activeImage.url}
-          alt={activeImage.alt}
-          width={activeImage.width}
-          height={activeImage.height}
-        />
-      ) : null}
 
-      <div className="flex gap-4 mt-8 flex-wrap">
+  return (
+    <div className="">
+      <h1 className="page-auto-margin text-center section-bottom-margin h1">{category.title}</h1>
+
+      <PayloadImage
+        className="w-full h-80 object-cover section-bottom-margin"
+        imageData={activeImage}
+      />
+
+      <div className="page-auto-margin section-bottom-margin flex content-center gap-4 flex-wrap">
         {category.images.length > 1
           ? category.images.map(image => (
               <Image
@@ -79,8 +75,8 @@ export default function Category() {
           : null}
       </div>
 
-      <h2 className="mt-16">Articles</h2>
-      <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-4">
+      <h2 className="page-auto-margin">Articles</h2>
+      <div className="page-auto-margin grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-4">
         {pages.length > 0 ? pages.map(page => <ArticlePreview article={page} />) : null}
       </div>
     </div>

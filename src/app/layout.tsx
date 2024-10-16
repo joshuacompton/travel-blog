@@ -3,19 +3,17 @@ import Header from '../components/header/Header'
 import type { Metadata } from 'next'
 import './global.css'
 
-  
-
 export const metadata: Metadata = {
-  title: "Zora's Travels"
+  title: "Zora's Blog",
 }
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode}>) {
-
-  return <html lang="en">
-    <body className="m-10">
-      <Header />
-      {children}
-    </body>
-  </html>
-  
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="en">
+      <body className="my-10">
+        <Header />
+        <div>{children}</div>
+      </body>
+    </html>
+  )
 }

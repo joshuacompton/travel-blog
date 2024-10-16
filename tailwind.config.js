@@ -8,14 +8,18 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        'xs': '440px',
+        xs: '440px',
       },
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
+        blue: 'var(--blue)',
+      },
+      fontFamily: {
+        cinzel: ['cinzel'],
+        eyesome: ['eyesome'],
       },
     },
   },
   plugins: [],
 }
-

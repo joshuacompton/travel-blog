@@ -45,16 +45,16 @@ export default function () {
 
   return (
     <div>
-      <h2>{page.title}</h2>
-      {featuredImage ? (
-        <PayloadImage className="w-full h-80 object-cover" imageData={featuredImage} />
-      ) : null}
+      <h1 className="page-auto-margin section-bottom-margin">{page.title}</h1>
+      <PayloadImage className="w-full h-80 object-cover" imageData={featuredImage} />
 
-      <h3>{heroText}</h3>
+      <h2 className="page-auto-margin section-bottom-margin text-center">{heroText}</h2>
 
-      {page.layout.map(layout => (
-        <Layout layout={layout} key={layout.id} />
-      ))}
+      <div className="page-auto-margin">
+        {page.layout.map(layout => (
+          <Layout layout={layout} key={layout.id} />
+        ))}
+      </div>
     </div>
   )
 }

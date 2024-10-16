@@ -37,14 +37,14 @@ const Header = () => {
   }
 
   return (
-    <header className='flex gap-4 m-4 items-start justify-between'>
+    <header className='flex gap-4 mb-6 items-start justify-between'>
       <Link href="/"><Image className='w-10' src={headerImage} alt='letter z' /></Link>
-      <h1 className="text-2xl">Zoras Travels</h1>
+      <h1 className="text-2xl xs:inline hidden">Zoras Travels</h1>
       <button onClick={toggleMenu} aria-expanded={showMenu}>
         <Image className='w-6' src={menuIcon} alt="menu" />
       </button>
 
-      {showMenu && categories.length > 0 ? <MobileMenu sections={categories} /> : null}
+      {showMenu && categories.length > 0 ? <MobileMenu categories={categories} /> : null}
     </header>
   )
 }

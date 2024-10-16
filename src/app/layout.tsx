@@ -6,8 +6,7 @@ import './global.css'
   
 
 export const metadata: Metadata = {
-  title: "Zora's Travels",
-  description: '',
+  title: "Zora's Travels"
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode}>) {

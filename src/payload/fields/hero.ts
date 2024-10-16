@@ -35,6 +35,16 @@ export const hero: Field = {
         },
       ],
     },
+    {
+      name: 'featuredImage',
+      type: 'upload',
+      label: 'Image',
+      relationTo: 'media',
+      required: true,
+      filterOptions: {
+        mimeType: { contains: 'image' },
+      },
+    },
     richText({
       admin: {
         elements: ['h1', largeBody, label, 'link'],

@@ -44,6 +44,10 @@ export const Pages: CollectionConfig = {
       required: true,
     },
     {
+      name: 'featured',
+      type: 'checkbox'
+    },
+    {
       name: 'publishedAt',
       type: 'date',
       admin: {

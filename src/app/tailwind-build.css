@@ -5,8 +5,11 @@
 :root {
   --purple: #e50df2;
   --blue: #546DDA;
+  --yellow: #ebd05b;
+  --light-purple: #fbeffa;
+  --off-white: #ececec;
 
-  --background: #ebd05b;
+  --background: #ececec;
   --secondary: var(--blue);
   --foreground: #1f1f1f;
 }

@@ -45,12 +45,13 @@ export const hero: Field = {
         mimeType: { contains: 'image' },
       },
     },
-    richText({
-      admin: {
-        elements: ['h1', largeBody, label, 'link'],
-        leaves: [],
-      },
-    }),
+    {
+      name: 'summary',
+      label: 'Summary (max 90)',
+      type: 'text',
+      required: true,
+      maxLength: 90,
+    },
     linkGroup({
       overrides: {
         maxRows: 2,

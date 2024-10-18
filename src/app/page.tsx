@@ -1,6 +1,6 @@
+import SectionTitle from '@/components/general/SectionTitle'
 import ArticlePreview from '@/components/homepage/ArticlePreview'
-import HomepageCategory from '@/components/homepage/HomepageCategory'
-import Image from 'next/image'
+import CategoryPreview from '@/components/homepage/CategoryPreview'
 import payload from 'payload'
 
 export default async function Home() {
@@ -21,15 +21,15 @@ export default async function Home() {
 
   return (
     <div className="page-auto-margin">
-      <div className="base-margin grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-4">
+      <div className="base-margin section-bottom-margin grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {categories.docs.map(category => (
-          <HomepageCategory category={category} key={category.id} />
+          <CategoryPreview category={category} key={category.id} />
         ))}
       </div>
 
-      <div className="base-margin">
-        <h2>Featured Articles</h2>
-        <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-4">
+      <div className="base-margin section-bottom-margin">
+        <SectionTitle title="Featured Articles" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {featuredArticles.docs.map(article => (
             <ArticlePreview article={article} key={article.id} />
           ))}

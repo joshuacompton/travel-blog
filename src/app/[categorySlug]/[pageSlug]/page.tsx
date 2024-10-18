@@ -46,7 +46,10 @@ export default function () {
   return (
     <div>
       <h1 className="page-auto-margin section-bottom-margin">{page.title}</h1>
-      <PayloadImage className="w-full h-80 object-cover" imageData={featuredImage} />
+      <PayloadImage
+        className="w-full h-80 object-cover section-bottom-margin"
+        imageData={featuredImage}
+      />
 
       <h2 className="page-auto-margin section-bottom-margin text-center">{heroText}</h2>
 

@@ -554,6 +554,10 @@ video {
   display: none;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
 }
@@ -562,21 +566,28 @@ video {
   position: relative;
 }
 
+.sticky {
+  position: sticky;
+}
+
 .bottom-0 {
   bottom: 0px;
 }
 
-.my-10 {
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
+.top-0 {
+  top: 0px;
 }
 
-.mb-6 {
-  margin-bottom: 1.5rem;
+.z-10 {
+  z-index: 10;
 }
 
 .mb-8 {
   margin-bottom: 2rem;
+}
+
+.mt-auto {
+  margin-top: auto;
 }
 
 .block {
@@ -595,12 +606,12 @@ video {
   display: grid;
 }
 
-.hidden {
-  display: none;
-}
-
 .h-16 {
   height: 4rem;
+}
+
+.h-20 {
+  height: 5rem;
 }
 
 .h-56 {
@@ -617,10 +628,6 @@ video {
 
 .w-16 {
   width: 4rem;
-}
-
-.w-36 {
-  width: 9rem;
 }
 
 .w-6 {
@@ -655,8 +662,16 @@ video {
   align-items: center;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
 }
 
 .gap-4 {
@@ -665,6 +680,10 @@ video {
 
 .gap-8 {
   gap: 2rem;
+}
+
+.gap-9 {
+  gap: 2.25rem;
 }
 
 .rounded {
@@ -699,6 +718,10 @@ video {
 .border-gray-900 {
   --tw-border-opacity: 1;
   border-color: rgb(17 24 39 / var(--tw-border-opacity));
+}
+
+.bg-background {
+  background-color: var(--background);
 }
 
 .bg-gray-200\/70 {
@@ -749,11 +772,6 @@ video {
   font-family: eyesome;
 }
 
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
@@ -795,6 +813,11 @@ video {
   margin-right: 2rem;
 }
 
+.larger-base-margin {
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
 .page-auto-margin {
   margin-left: auto;
   margin-right: auto;
@@ -825,9 +848,11 @@ h2,
   --yellow: #ebd05b;
   --light-purple: #fbeffa;
   --off-white: #ececec;
+  /* peach f6e079 */
   --background: #ececec;
   --secondary: var(--blue);
   --foreground: #1f1f1f;
+  --peach: #fbd8b2;
 }
 
 @font-face {
@@ -878,12 +903,6 @@ body {
 .hover\:grayscale:hover {
   --tw-grayscale: grayscale(100%);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
-@media (min-width: 440px) {
-  .xs\:inline {
-    display: inline;
-  }
 }
 
 @media (min-width: 640px) {

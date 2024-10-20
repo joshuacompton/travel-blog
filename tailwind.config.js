@@ -14,6 +14,7 @@ module.exports = {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         blue: 'var(--blue)',
+        navbar: 'var(--peach)',
       },
       fontFamily: {
         cinzel: ['cinzel'],

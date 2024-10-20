@@ -8,10 +8,12 @@
   --yellow: #ebd05b;
   --light-purple: #fbeffa;
   --off-white: #ececec;
+  /* peach f6e079 */
 
   --background: #ececec;
   --secondary: var(--blue);
   --foreground: #1f1f1f;
+  --peach: #fbd8b2;
 }
 
 @font-face {
@@ -45,6 +47,10 @@ body {
 
   .base-margin {
     @apply mx-8;
+  }
+
+  .larger-base-margin {
+    @apply mx-20;
   }
 
   .page-auto-margin {

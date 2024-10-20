@@ -1,8 +1,8 @@
 'use client'
 
+import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
 import Layout from '@/components/article/Layout'
 import qs from 'qs'
 import PayloadImage from '@/components/article/PayloadImage'
@@ -12,7 +12,8 @@ export default function () {
   const [page, setPage] = useState({
     id: null,
     title: '',
-    hero: { richText: {}, featuredImage: {} },
+    hero: { summary: '', featuredImage: {} },
+    categories: [{ title: '', slug: '' }],
     layout: [],
   })
 
@@ -27,21 +28,22 @@ export default function () {
       if (!resp.ok) {
         console.log('page api failed')
       }
-      const data = await resp.json()
 
+      const data = await resp.json()
       setPage(data?.docs[0])
     }
     fetchPage()
   }, [])
-  // console.log(page?.hero?.richText)
+
+  // figure this out.
+  if (!page) {
+    return <p>loading</p>
+  }
 
   const featuredImage = page?.hero?.featuredImage
-  const heroRichText = page?.hero?.richText
-  let heroText = null
-  if (heroRichText) {
-    heroText = heroRichText[0]?.children[0]?.text
-    console.log(page)
-  }
+  const summary = page.hero.summary
+  const categoryTitle = page.categories[0].title
+  const categorySlug = page.categories[0].slug
 
   return (
     <div>
@@ -51,7 +53,18 @@ export default function () {
         imageData={featuredImage}
       />
 
-      <h2 className="page-auto-margin section-bottom-margin text-center">{heroText}</h2>
+      <div className="page-auto-margin">
+        <Link
+          className="inline-block base-margin text-gray-600 font-extralight text-sm border-b-2 border-gray-300 section-bottom-margin"
+          href={`/${categorySlug}`}
+        >
+          {categoryTitle}
+        </Link>
+      </div>
+
+      <div className="page-auto-margin section-bottom-margin">
+        <h2 className="base-margin">{summary}</h2>
+      </div>
 
       <div className="page-auto-margin">
         {page.layout.map(layout => (

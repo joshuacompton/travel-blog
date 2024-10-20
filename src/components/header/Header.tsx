@@ -1,23 +1,21 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { useState, useEffect } from 'react'
+import useWindowWidth from '@/hooks/useWindowWidth'
+import Image from 'next/image'
 import menuIcon from '../../assets/images/hamburger-icon.svg'
-import headerImage from '../../assets/images/Zora.png'
-import MobileMenu from './MobileMenu'
+import { usePathname } from 'next/navigation'
 
-// let categories = [
-// { title: 'International Travel', url: '/section/international-travel' },
-// { title: 'Local Travel', url: '/section/local-travel' },
-// { title: 'Humanitarian Worker', url: '/section/humanitarian' },
-// { title: 'Religion', url: '/section/religion' },
-// ]
+const widthBreakPoint = 768
+
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false)
   const [categories, setCategories] = useState([])
+  const windowWidth = useWindowWidth()
+  const showDesktopMenu = windowWidth > widthBreakPoint
+  const onHomePage = usePathname() === '/'
 
-  // I would love to grab this once with local api in the root layout but noooo, next js cant suppport that.
   useEffect(() => {
     const fetchData = async () => {
       const resp = await fetch('/api/categories')
@@ -35,23 +33,62 @@ const Header = () => {
     setShowMenu(!showMenu)
   }
 
-  return (
-    <header className="flex gap-4 mb-6 items-start justify-between base-margin">
-      <Link href="/">
-        {/* <Image className="w-36 h-16 object-cover" src={headerImage} alt="Header image" /> */}
-        <h1 className="mb-8">
-          <span className="font-eyesome text-5xl block text-blue">Zora's </span>
-          <span className="font-cinzel  text-3xl block pl-10">Blog</span>
-        </h1>
-      </Link>
-      {/* <h1 className="text-2xl xs:inline hidden">Zoras Travels</h1> */}
-      <button onClick={toggleMenu} aria-expanded={showMenu}>
-        <Image className="w-6" src={menuIcon} alt="menu" />
-      </button>
+  if (windowWidth > widthBreakPoint) {
+    return (
+      <div className="w-full">
+        <header className="flex py-6 items-start justify-around base-margin">
+          <Link href="/">
+            <h1>
+              <span className="font-eyesome text-5xl block text-blue">Zora's </span>
+              <span className="font-cinzel  text-3xl block pl-10">Blog</span>
+            </h1>
+          </Link>
 
-      {showMenu && categories.length > 0 ? <MobileMenu categories={categories} /> : null}
-    </header>
-  )
+          {!onHomePage ? (
+            <nav className="w-full">
+              <ul className="flex flex-wrap gap-9 h-20 justify-center">
+                {categories.map(category => (
+                  <li className="mt-auto" key={category.id}>
+                    <Link href={`/${category.slug}`}>{category.title}</Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ) : null}
+        </header>
+      </div>
+    )
+  } else {
+    return (
+      <div className="sticky z-10 bg-background top-0 w-full">
+        <header className="flex gap-8 py-6 items-start justify-between base-margin">
+          <Link href="/">
+            <h1>
+              <span className="font-eyesome text-5xl block text-blue">Zora's </span>
+              <span className="font-cinzel  text-3xl block pl-10">Blog</span>
+            </h1>
+          </Link>
+
+          <div>
+            <button onClick={toggleMenu} aria-expanded={showMenu}>
+              <Image className="w-6" src={menuIcon} alt="menu" />
+            </button>
+          </div>
+        </header>
+        {showMenu ? (
+          <nav>
+            <ul className="relative">
+              {categories.map(category => (
+                <li key={category.id}>
+                  <Link href={`/${category.slug}`}>{category.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ) : null}
+      </div>
+    )
+  }
 }
 
 export default Header

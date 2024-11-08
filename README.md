@@ -1,5 +1,6 @@
 npx tailwindcss -i ./src/app/tailwind-build.css -o ./src/app/global.css --watch
 npm run build
+http://localhost:3000/
 
 
 

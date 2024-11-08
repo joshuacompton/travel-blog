@@ -3,9 +3,9 @@
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import Layout from '@/components/article/Layout'
+import Layout from '@/components/payload/Layout'
 import qs from 'qs'
-import PayloadImage from '@/components/article/PayloadImage'
+import PayloadImage from '@/components/payload/PayloadImage'
 
 export default function () {
   const { pageSlug } = useParams()

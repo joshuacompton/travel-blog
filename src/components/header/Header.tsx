@@ -9,11 +9,10 @@ import { usePathname } from 'next/navigation'
 
 const widthBreakPoint = 768
 
-const Header = () => {
+export default function Header() {
   const [showMenu, setShowMenu] = useState(false)
   const [categories, setCategories] = useState([])
   const windowWidth = useWindowWidth()
-  const showDesktopMenu = windowWidth > widthBreakPoint
   const onHomePage = usePathname() === '/'
 
   useEffect(() => {
@@ -21,7 +20,7 @@ const Header = () => {
       const resp = await fetch('/api/categories')
       if (!resp.ok) {
         // figure out how to handle error
-        console.log('sections search failed')
+        throw new Error('header categories fetch failed')
       }
       const data = await resp.json()
       setCategories(data?.docs)
@@ -90,5 +89,3 @@ const Header = () => {
     )
   }
 }
-
-export default Header

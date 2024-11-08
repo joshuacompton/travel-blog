@@ -1,4 +1,4 @@
-import PayloadImage from '../article/PayloadImage'
+import PayloadImage from '../payload/PayloadImage'
 import Link from 'next/link'
 
 export default function PreviewImage({

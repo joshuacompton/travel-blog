@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import PayloadImage from '@/components/article/PayloadImage'
+import PayloadImage from '@/components/payload/PayloadImage'
 import ArticlePreview from '@/components/homepage/ArticlePreview'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'

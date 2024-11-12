@@ -2,9 +2,21 @@ import SectionTitle from '@/components/general/SectionTitle'
 import ArticlePreview from '@/components/homepage/ArticlePreview'
 import CategoryPreview from '@/components/homepage/CategoryPreview'
 import payload from 'payload'
+import express from 'express'
 
 export default async function Home() {
-  // Should find a way to unify this with the similar call in header.
+  // Apparently server.ts doesnt run from npm run build so this is needed.
+  // Its a quick fix but a better solution should be found.
+  if (!payload.types) {
+    await payload.init({
+      secret: process.env.PAYLOAD_SECRET || '',
+      express: express(),
+      onInit: () => {
+        payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`)
+      },
+    })
+  }
+
   const categories = await payload.find({
     collection: 'categories',
   })

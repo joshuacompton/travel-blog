@@ -6,6 +6,7 @@ import useWindowWidth from '@/hooks/useWindowWidth'
 import Image from 'next/image'
 import menuIcon from '../../assets/images/hamburger-icon.svg'
 import { usePathname } from 'next/navigation'
+import ClientFetchCategories from '@/fetches/ClientFetchCategories'
 
 const widthBreakPoint = 768
 
@@ -17,13 +18,7 @@ export default function Header() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const resp = await fetch('/api/categories')
-      if (!resp.ok) {
-        // figure out how to handle error
-        throw new Error('header categories fetch failed')
-      }
-      const data = await resp.json()
-      setCategories(data?.docs)
+      setCategories(await ClientFetchCategories())
     }
     fetchData()
   }, [])

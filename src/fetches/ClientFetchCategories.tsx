@@ -3,7 +3,7 @@ export default function ClientFetchCategories() {
     const resp = await fetch('/api/categories')
     if (!resp.ok) {
       // figure out how to handle error
-      console.log('sections search failed')
+      console.log('Category API failed')
     }
     const data = await resp.json()
     return await data?.docs

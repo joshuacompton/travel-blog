@@ -7,25 +7,28 @@ import express from 'express'
 export default async function Home() {
   // Apparently server.ts doesnt run from npm run build so this is needed.
   // Its a quick fix but a better solution should be found.
-  if (!payload.types) {
-    await payload.init({
-      secret: process.env.PAYLOAD_SECRET || '',
-      express: express(),
-      onInit: () => {
-        payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`)
-      },
-    })
-  }
+  // if (!payload.types) {
+  //   await payload.init({
+  //     secret: process.env.PAYLOAD_SECRET || '',
+  //     express: express(),
+  //     onInit: () => {
+  //       payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`)
+  //     },
+  //   })
+  // }
 
-  const categories = await payload.find({
-    collection: 'categories',
-  })
+  // const categories = await payload.find({
+  //   collection: 'categories',
+  // })
 
-  const featuredArticles = await payload.find({
-    collection: 'pages',
-    where: { featured: { equals: 'true' } },
-    sort: '-createdAt',
-  })
+  // const featuredArticles = await payload.find({
+  //   collection: 'pages',
+  //   where: { featured: { equals: 'true' } },
+  //   sort: '-createdAt',
+  // })
+
+  let categories = null
+  let featuredArticles = null
 
   if (!categories || !categories?.docs || categories.docs.length < 1) {
     return <div>loading</div>

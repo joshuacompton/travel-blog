@@ -26,7 +26,8 @@
     ],
     "paths": {
       "react": ["./node_modules/@types/react"],
-       "@/*": ["./src/*"]
+       "@/*": ["./src/*"],
+       "@payload-config": ["./src/payload/payload.config.ts"]
     }
   },
   "include": [

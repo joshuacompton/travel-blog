@@ -51,6 +51,10 @@ export default function Category() {
     fetchPages()
   }, [])
 
+  if (!category) {
+    return <p>Loading</p>
+  }
+
   return (
     <div className="">
       <h1 className="base-margin text-center section-bottom-margin h1">{category.title}</h1>
